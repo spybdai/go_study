@@ -71,4 +71,49 @@ func main(){
 	Printf("%v, %T\n", b, b)
 	// will lead run-time error
 	//b.Abs()
+
+
+	// empty interface
+	var i interface{}
+	Printf("%v, %T\n", i, i)
+	
+	i = 32	
+	Printf("%v, %T\n", i, i)
+
+	i = "hello world"
+	Printf("%v, %T\n", i, i)
+	
+
+	// type assertion
+	
+	var i2 interface{} = "hello"
+
+	s := i2.(string)
+	Println(s)
+
+	s, ok := i2.(string)
+	Println(s, ok)
+
+	f2, ok := i2.(float64)
+	Println(f2, ok)
+
+	//f3 := i2.(float64) //panic
+	//Println(f3)
+
+	// type switch	
+	do(21)
+	do("hello")
+	do(21.00)
+	
+}
+
+func do(i interface{}) {
+	switch v:=i.(type){
+	case int:
+		Printf("twice %v, %v\n", v, v*2)
+	case string:
+		Printf("%q leng is %v\n", v, len(v))
+	default:
+		Printf("Dont know, %v, %T\n", v, v)
+	}
 }
