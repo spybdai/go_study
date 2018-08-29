@@ -10,7 +10,34 @@ import (
 func main() {
 	//exampleChannel()
 	//exampleFibonacci()
-	exampleSelect()
+	//exampleSelect()
+	//exampleSelectDefault()
+	Resolve()
+	
+	
+}
+
+func treeSolution() {
+	
+}
+
+func exampleSelectDefault() {
+	tick := time.Tick(2 * time.Second)
+	boom := time.After(10 * time.Second)
+
+	for {
+		select {
+		case <-tick:
+			Println("tick .")	
+		case <-boom:
+			Println("boom!")
+			return
+		default:
+			Println(".")
+			time.Sleep(time.Second)
+			Println("sleeped")
+		}
+	}
 }
 
 func exampleSelect() {
