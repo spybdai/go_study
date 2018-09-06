@@ -73,5 +73,17 @@ func main() {
     	for index, runeValue := range sample{
       		Printf("%#U starts at byte position %d\n", runeValue, index)
     	}
+
+	//
+	Println(string([]byte{'\xe4', '\xbd', '\xa0', '\xe5', '\xa5', '\xbd'}))
+	Println("\xe4\xbd\xa0\xe5\xa5\xbd")
+	Println([]rune{'\u4F60', '\u597D'})
+	Printf("%U\n", []rune{'\u4F60', '\u597D'}[0])
+	Printf("%v\n", []rune{'\u4F60', '\u597D'}[0])
+	Println(string([]rune{'\u4F60', '\u597D'}[0]))
+
+	Println([]rune("你好"))
+	Printf("%U", []rune("你好"))
+
 }
 
