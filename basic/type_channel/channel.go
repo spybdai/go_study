@@ -70,6 +70,7 @@ func exampleClosedChannel() {
 	Println(v)
 
 	// will work
+	// 2nd valures will be used to detect if the channel is closed
 	v, ok := <- ch
 	Println(v, ok)
 
@@ -118,7 +119,8 @@ func exampleRangeOnChannel(ch <-chan int) {
 }
 
 func exampleSelectOnChannel() {
-
+	
+	Println("exampleSelectOnChannel")
 	chs := [3]chan int{
 		make(chan int, 1),
 		make(chan int, 1),
@@ -126,15 +128,23 @@ func exampleSelectOnChannel() {
 	}
 	
 	for i:=0; i<len(chs); i++ {
-		chs[i] <- i
+		chs[i] <- (i + 10)
 	}
 	
+	
+	// close all the channels after 1 microsecond
+	time.AfterFunc(time.Microsecond, func() {
+		for i:=0; i<len(chs); i++ {
+			close(chs[i])
+		}
+	})
 
 	// will first evaluate all the cases first, 
 	// then, select 1 hit to execute
 
 	var flag int
 
+	//for i:=0; i<2; i++ {
 	for {
 		select {
 		case v, ok := <- chs[0]:
@@ -162,6 +172,7 @@ func exampleSelectOnChannel() {
 			Println("default")
 		}
 
+		Println(flag)
 		if flag == 1 {
 			break
 		}
