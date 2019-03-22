@@ -1,0 +1,17 @@
+
+deployment:
+
+dependency management:
+Godeps
+Glide
+Dep
+
+gb
+vgo
+
+
+code style:
+golint
+
+
+

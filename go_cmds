@@ -1,0 +1,27 @@
+https://github.com/hyper0x/go_command_tutorial
+
+build
+get
+    customized import path
+
+install
+run
+
+doc
+godoc
+
+
+
+
+// test
+go test -race // race detection
+go vet  // static analysis
+
+
+// CI
+
+golint
+github.com/golang/lint/golint
+
+
+
