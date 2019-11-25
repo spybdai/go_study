@@ -3,3 +3,4 @@
 !*.txt
 !*/
 *.swap
+vendor
